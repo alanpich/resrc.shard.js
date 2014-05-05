@@ -1,0 +1,7 @@
+/*!
+ * ReSRC Shard
+ * Copyright (C) 2014 ReSRC Ltd
+ * http://www.resrc.it
+ * Licensed under the MIT license
+ */
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>ReSRC Shard Advanced Example</title>
+  <style>.resrc { width: 100% }</style>
+  <!-- 1. Load the resrc.js library -->
+  <script src="http://use.resrc.it/0.7"></script>
+  <!-- 2. Load the plugin -->
+  <script src="../src/resrc.shard.js"></script>
+  <!-- 3. On DOM Ready, Execute the resrc plugin -->
+  <script>
+    resrc.ready(function () {
+      var defaults = {
+        resrcOnResizeDown : true
+      };
+      resrc.options = resrc.extend(resrc.options, defaults);
+      resrc.shard({servers : ["app1.resrc.it", "app2.resrc.it"]});
+    });
+  </script>
+</head>
+<body>
+
+<!--
+We shard off just app1.resrc.it and app2.resrc.it as we pass them into the plugin as options.
+-->
+
+<img data-src="http://app.resrc.it/http://www.your-site.co/image.jpg" alt="" class="resrc"/>
+<img data-src="http://app.resrc.it/http://www.your-site.co/image.jpg" alt="" class="resrc"/>
+<img data-src="http://app.resrc.it/http://www.your-site.co/image.jpg" alt="" class="resrc"/>
+<img data-src="http://app.resrc.it/http://www.your-site.co/image.jpg" alt="" class="resrc"/>
+<img data-src="http://app.resrc.it/http://www.your-site.co/image.jpg" alt="" class="resrc"/>
+<img data-src="http://app.resrc.it/http://www.your-site.co/image.jpg" alt="" class="resrc"/>
+
+</body>
+</html>

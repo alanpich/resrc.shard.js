@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>ReSRC Shard Example</title>
+  <style>.resrc { width: 100% }</style>
+  <!-- 1. Load the resrc.js library -->
+  <script src="http://use.resrc.it/0.7"></script>
+  <!-- 2. Load the plugin -->
+  <script src="../src/resrc.shard.js"></script>
+  <!-- 3. On DOM Ready, Execute the resrc plugin -->
+  <script>
+    resrc.ready(function () {
+      resrc.shard();
+    });
+  </script>
+</head>
+<body>
+
+<img data-src="http://app.resrc.it/http://www.your-site.co/image.jpg" alt="" class="resrc"/>
+<img data-src="http://app.resrc.it/http://www.your-site.co/image.jpg" alt="" class="resrc"/>
+<img data-src="http://app.resrc.it/http://www.your-site.co/image.jpg" alt="" class="resrc"/>
+<img data-src="http://app.resrc.it/http://www.your-site.co/image.jpg" alt="" class="resrc"/>
+<img data-src="http://app.resrc.it/http://www.your-site.co/image.jpg" alt="" class="resrc"/>
+<img data-src="http://app.resrc.it/http://www.your-site.co/image.jpg" alt="" class="resrc"/>
+
+</body>
+</html>

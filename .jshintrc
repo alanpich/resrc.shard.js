@@ -1,0 +1,10 @@
+{
+  "browser" : true,
+  "curly" : true,
+  "eqeqeq" : true,
+  "newcap" : true,
+  "strict" : true,
+  "trailing" : true,
+  "unused": true,
+  "quotmark" : "double"
+}

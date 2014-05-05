@@ -1,0 +1,20 @@
+{
+  "name" : "resrc.shard.js",
+  "description" : "A lightweight plugin to shard server url's for use with resrc.js",
+  "homepage" : "https://github.com/resrcit/resrc.shard.js",
+  "version" : "1.0.0",
+  "author" : "ReSRC (https://github.com/resrcit)",
+  "license" : "MIT",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/resrcit/resrc.shard.js.git"
+  },
+  "dependencies" : {
+    "grunt" : "~0.4.1"
+  },
+  "devDependencies" : {
+    "grunt-contrib-jshint" : "~0.6.4",
+    "grunt-contrib-uglify" : "~0.2.4",
+    "grunt-contrib-watch" : "~0.5.3"
+  }
+}

@@ -5,13 +5,15 @@
   <title>ReSRC Shard Example</title>
   <style>.resrc { width: 100% }</style>
   <!-- 1. Load the resrc.js library -->
-  <script src="http://use.resrc.it/0.7"></script>
+  <script src="http://use.resrc.it/0.8"></script>
   <!-- 2. Load the plugin -->
   <script src="../src/resrc.shard.js"></script>
   <!-- 3. On DOM Ready, Execute the resrc plugin -->
   <script>
     resrc.ready(function () {
-      resrc.shard();
+      resrc
+       .shard()
+       .resrc();
     });
   </script>
 </head>

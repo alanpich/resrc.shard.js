@@ -1,6 +1,11 @@
 (function (resrc, window) {
     "use strict";
 
+    /**
+     * Will be set to TRUE if localStorage is supported in this browser
+     *
+     * @type {Boolean}
+     */
     var local_storage_supported = (function() {
         try {
             return 'localStorage' in window && window['localStorage'] !== null;
@@ -10,12 +15,24 @@
     })();
 
 
-
+    /**
+     * Generates a localStorage key for a URL
+     *
+     * @param url {String}  URL to generate key for
+     * @returns   {String}
+     */
     var getLocalStorageKey = function(url){
         return 'resrc.it::'+url;
     };
 
 
+    /**
+     * Checks for a server value stored in localStorage for a URL
+     *
+     * @param url  {String}  The URL to check for
+     * @returns {String|false}  Returns string value if found in localStorage
+     *                          or FALSE otherwise
+     */
     var hasStoredServerForUrl = function(url){
         var key = getLocalStorageKey(url);
         if(local_storage_supported && localStorage[key] !== null){
@@ -23,6 +40,7 @@
         }
         return false;
     };
+
 
     /**
      * Stores a server name against a URL in local storage (if supported)
@@ -38,16 +56,38 @@
     };
 
 
+    /**
+     * Pull a random(ish) server from the stack
+     *
+     * @param i {Number}  An index number
+     * @param resrcServerArray {Array<String>}  Array of servers to pick from
+     * @returns {String}
+     */
     var serverShard = function (i, resrcServerArray) {
         return resrcServerArray[i % resrcServerArray.length];
     };
 
-    var getDomainName = function (data) {
+
+    /**
+     * Extract host/domain from a URL
+     *
+     * @param url {String} URL to extract hostname from
+     * @returns {String}
+     */
+    var getDomainName = function (url) {
         var a = document.createElement("a");
-        a.href = data;
+        a.href = url;
         return a.hostname;
     };
 
+
+    /**
+     * Modifies a URL to set a new host/domain name
+     *
+     * @param url       {String}  The URL to modify
+     * @param newDomain {String} The new host/domain name to set
+     * @returns {String}
+     */
     var setDomainName = function(url,newDomain){
         return url.replace(getDomainName(url),newDomain);
     };
@@ -68,10 +108,10 @@
             localStorage: true
         };
 
-        var settings = resrc.extend(defaults, options);
+        var settings = resrc.extend(defaults, options),
+            counter = 0,
+            use_local_storage = local_storage_supported && !!settings.localStorage;
 
-        var counter = 0;
-        var use_local_storage = local_storage_supported && settings.localStorage;
 
 
         /**
@@ -116,7 +156,6 @@
          */
         resrc.plugin.addImageObjectModifier(function (elem, resrcObj) {
             // Create a reference to the new server address.
-            //@TODO Better way of picking a shard
             var server = getServerIndexForUrl(resrcObj.fallbackImgPath);
 
             // Replace the existing server domain name with the new "sharded" server domain.
